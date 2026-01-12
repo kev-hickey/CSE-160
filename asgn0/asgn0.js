@@ -114,3 +114,20 @@ function handleDrawOperationEvent() {
     }
   }
 }
+
+function angleBetween(v1, v2) {
+    let dot = Vector3.dot(v1, v2);
+    let mag1 = v1.magnitude();
+    let mag2 = v2.magnitude();
+
+    if (mag1 === 0 || mag2 === 0) return 0; // avoid division by zero
+
+    let cosAlpha = dot / (mag1 * mag2);
+
+    // Clamp cosAlpha to [-1, 1] to avoid rounding errors outside the valid range
+    cosAlpha = Math.max(-1, Math.min(1, cosAlpha));
+
+    let alphaRad = Math.acos(cosAlpha); // in radians
+    let alphaDeg = alphaRad * (180 / Math.PI); // convert to degrees
+    return alphaDeg;
+}
