@@ -117,7 +117,7 @@ function handleDrawOperationEvent() {
       console.log("v2 is zero vector; angle undefined");
     } else {
       let angle = angleBetween(v1, v2);
-      console.log("Angle between v1 and v2:", angle.toFixed(2), "degrees");
+      console.log("Angle:", angle.toFixed(2));
     }
   }
 }
