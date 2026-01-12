@@ -80,7 +80,6 @@ function handleDrawOperationEvent() {
   var s = parseFloat(document.getElementById('scalar').value);
 
   if (op === "add") {
-    // Make a copy so original v1/v2 are not changed
     var v3 = new Vector3(v1.elements);
     v3.add(v2);
     drawVectorOnCanvas(v3.elements[0], v3.elements[1], "green");
