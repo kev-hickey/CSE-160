@@ -9,14 +9,18 @@ function main() {
 
   ctx = canvas.getContext('2d');
 
-  // Draw initial v1
-  drawVectorOnCanvas(2.25, 2.25, "red");
+  // Draw initial vectors on black background
+  handleDrawEvent(); // this fills canvas and draws v1 (red) and v2 (blue)
 
   // Attach single draw button
   document.getElementById('drawButton').addEventListener('click', handleDrawEvent);
 }
 
 function handleDrawEvent() {
+  // Clear canvas and fill black
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, 400, 400);
+
   // Read v1
   var x1 = parseFloat(document.getElementById('x1').value);
   var y1 = parseFloat(document.getElementById('y1').value);
@@ -24,10 +28,6 @@ function handleDrawEvent() {
   // Read v2
   var x2 = parseFloat(document.getElementById('x2').value);
   var y2 = parseFloat(document.getElementById('y2').value);
-
-  // Clear canvas
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, 400, 400);
 
   // Draw v1 in red
   drawVectorOnCanvas(x1, y1, "red");
