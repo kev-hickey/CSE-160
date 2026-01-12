@@ -113,12 +113,11 @@ function handleDrawOperationEvent() {
       drawVectorOnCanvas(v2norm.elements[0], v2norm.elements[1], "green");
     }
   } else if (op == "ang") {
-    if (x2 === 0 && y2 === 0) {
-      console.log("v2 is zero vector; angle undefined");
-    } else {
-      let angle = angleBetween(v1, v2);
-      console.log("Angle:", angle.toFixed(2));
-    }
+    let angle = angleBetween(v1, v2);
+    console.log("Angle:", angle);
+  } else if (op == "area") {
+    let area = areaTriangle(v1, v2);
+    console.log("Area of the triangle:", area);
   }
 }
 
@@ -137,4 +136,10 @@ function angleBetween(v1, v2) {
   let alphaRad = Math.acos(cosAlpha); // in radians
   let alphaDeg = alphaRad * (180 / Math.PI); // convert to degrees
   return alphaDeg;
+}
+
+function areaTriangle(v1,v2) {
+  let cross = Vector3.cross(v1,v2);
+  let area = crossVec.magnitude() / 2;
+  return area;
 }
