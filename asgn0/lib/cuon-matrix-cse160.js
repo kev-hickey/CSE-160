@@ -127,7 +127,7 @@ class Vector3 {
       * @return this
       */
     normalize() {
-        this.magnitude();
+        let m = this.magnitude();
         if (m > 0) {  // avoid division by zero
             this.elements[0] /= m;
             this.elements[1] /= m;
