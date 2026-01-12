@@ -109,25 +109,32 @@ function handleDrawOperationEvent() {
     drawVectorOnCanvas(v1norm.elements[0], v1norm.elements[1], "green");
 
     if (x2 !== 0 || y2 !== 0) {
-        var v2norm = new Vector3(v2.elements).normalize();
-        drawVectorOnCanvas(v2norm.elements[0], v2norm.elements[1], "green");
+      var v2norm = new Vector3(v2.elements).normalize();
+      drawVectorOnCanvas(v2norm.elements[0], v2norm.elements[1], "green");
+    }
+  } else if (op == "ang") {
+    if (x2 === 0 && y2 === 0) {
+      console.log("v2 is zero vector; angle undefined");
+    } else {
+      let angle = angleBetween(v1, v2);
+      console.log("Angle between v1 and v2:", angle.toFixed(2), "degrees");
     }
   }
 }
 
 function angleBetween(v1, v2) {
-    let dot = Vector3.dot(v1, v2);
-    let mag1 = v1.magnitude();
-    let mag2 = v2.magnitude();
+  let dot = Vector3.dot(v1, v2);
+  let mag1 = v1.magnitude();
+  let mag2 = v2.magnitude();
 
-    if (mag1 === 0 || mag2 === 0) return 0; // avoid division by zero
+  if (mag1 === 0 || mag2 === 0) return 0; // avoid division by zero
 
-    let cosAlpha = dot / (mag1 * mag2);
+  let cosAlpha = dot / (mag1 * mag2);
 
-    // Clamp cosAlpha to [-1, 1] to avoid rounding errors outside the valid range
-    cosAlpha = Math.max(-1, Math.min(1, cosAlpha));
+  // Clamp cosAlpha to [-1, 1] to avoid rounding errors outside the valid range
+  cosAlpha = Math.max(-1, Math.min(1, cosAlpha));
 
-    let alphaRad = Math.acos(cosAlpha); // in radians
-    let alphaDeg = alphaRad * (180 / Math.PI); // convert to degrees
-    return alphaDeg;
+  let alphaRad = Math.acos(cosAlpha); // in radians
+  let alphaDeg = alphaRad * (180 / Math.PI); // convert to degrees
+  return alphaDeg;
 }
