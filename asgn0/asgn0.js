@@ -31,9 +31,6 @@ function handleDrawEvent() {
 
   // Draw v1 in red
   drawVectorOnCanvas(x1, y1, "red");
-
-  // Draw v2 in blue
-  drawVectorOnCanvas(x2, y2, "blue");
 }
 
 function drawVectorOnCanvas(x, y, color) {
