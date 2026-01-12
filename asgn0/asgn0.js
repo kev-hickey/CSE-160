@@ -101,5 +101,16 @@ function handleDrawOperationEvent() {
     v4.div(s);
     drawVectorOnCanvas(v3.elements[0], v3.elements[1], "green");
     drawVectorOnCanvas(v4.elements[0], v4.elements[1], "green");
+  } else if (op == "mag") {
+    console.log("Magnitude of v1:", v1.magnitude());
+    if (x2 !== 0 || y2 !== 0) console.log("Magnitude of v2:", v2.magnitude());
+  } else if (op == "nor") {
+    var v1norm = new Vector3(v1.elements).normalize();
+    drawVectorOnCanvas(v1norm.elements[0], v1norm.elements[1], "green");
+
+    if (x2 !== 0 || y2 !== 0) {
+        var v2norm = new Vector3(v2.elements).normalize();
+        drawVectorOnCanvas(v2norm.elements[0], v2norm.elements[1], "green");
+    }
   }
 }
