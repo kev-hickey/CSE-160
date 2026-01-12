@@ -12,8 +12,10 @@ function main() {
   // Draw initial vectors on black background
   handleDrawEvent(); // this fills canvas and draws v1 (red) and v2 (blue)
 
-  // Attach single draw button
+  // Attach draw buttons
   document.getElementById('drawButton').addEventListener('click', handleDrawEvent);
+  document.getElementById('drawOperationButton').addEventListener('click', handleDrawOperationEvent);
+
 }
 
 function handleDrawEvent() {
@@ -51,4 +53,54 @@ function drawVectorOnCanvas(x, y, color) {
     centerY - v.elements[1] * scale
   );
   ctx.stroke();
+}
+
+function handleDrawOperationEvent() {
+  // Clear canvas
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, 400, 400);
+
+  // Read v1 and v2 from inputs
+  var x1 = parseFloat(document.getElementById('x1').value);
+  var y1 = parseFloat(document.getElementById('y1').value);
+  var x2 = parseFloat(document.getElementById('x2').value);
+  var y2 = parseFloat(document.getElementById('y2').value);
+
+  var v1 = new Vector3([x1, y1, 0]);
+  var v2 = new Vector3([x2, y2, 0]);
+
+  // Draw original vectors
+  drawVectorOnCanvas(v1.elements[0], v1.elements[1], "red");
+  if (x2 !== 0 || y2 !== 0) {
+    drawVectorOnCanvas(v2.elements[0], v2.elements[1], "blue");
+  }
+
+  // Read operation
+  var op = document.getElementById('operation').value;
+  var s = parseFloat(document.getElementById('scalar').value);
+
+  if (op === "add") {
+    // Make a copy so original v1/v2 are not changed
+    var v3 = new Vector3(v1.elements);
+    v3.add(v2);
+    drawVectorOnCanvas(v3.elements[0], v3.elements[1], "green");
+  } else if (op === "sub") {
+    var v3 = new Vector3(v1.elements);
+    v3.sub(v2);
+    drawVectorOnCanvas(v3.elements[0], v3.elements[1], "green");
+  } else if (op === "mul") {
+    var v3 = new Vector3(v1.elements);
+    var v4 = new Vector3(v2.elements);
+    v3.mul(s);
+    v4.mul(s);
+    drawVectorOnCanvas(v3.elements[0], v3.elements[1], "green");
+    drawVectorOnCanvas(v4.elements[0], v4.elements[1], "green");
+  } else if (op === "div") {
+    var v3 = new Vector3(v1.elements);
+    var v4 = new Vector3(v2.elements);
+    v3.div(s);
+    v4.div(s);
+    drawVectorOnCanvas(v3.elements[0], v3.elements[1], "green");
+    drawVectorOnCanvas(v4.elements[0], v4.elements[1], "green");
+  }
 }
