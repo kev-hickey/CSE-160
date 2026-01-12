@@ -1,23 +1,41 @@
-// DrawTriangle.js (c) 2012 matsuda
+var canvas, ctx;
+
 function main() {  
   // Retrieve <canvas> element
-  var canvas = document.getElementById('example');  
+  canvas = document.getElementById('example');  
   if (!canvas) { 
     console.log('Failed to retrieve the <canvas> element');
     return false; 
   } 
 
   // Get the rendering context for 2DCG
-  var ctx = canvas.getContext('2d');
+  ctx = canvas.getContext('2d');
 
-  // black background
+  // Draw initial vector
+  drawVectorOnCanvas(2.25, 2.25);
+
+  // Attach event listener to button
+  document.getElementById('drawButton').addEventListener('click', handleDrawEvent);
+}
+
+function handleDrawEvent() {
+  // Read input values
+  var x = parseFloat(document.getElementById('xInput').value);
+  var y = parseFloat(document.getElementById('yInput').value);
+
+  // Clear canvas and draw new vector
+  drawVectorOnCanvas(x, y);
+}
+
+function drawVectorOnCanvas(x, y) {
+  // Clear canvas
   ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, 400, 400)
+  ctx.fillRect(0, 0, 400, 400);
 
-  // create vector
-  var v1 = new Vector3([2.25, 2.25, 0]);
+  // Create vector
+  var v1 = new Vector3([x, y, 0]);
 
-  // draw it
+  // Draw it
   drawVector(ctx, v1, "red");
 }
 
@@ -28,7 +46,7 @@ function drawVector(ctx, v, color) {
 
   ctx.strokeStyle = color;
   ctx.beginPath();
-  ctx.moveTo(centerX,centerY);
+  ctx.moveTo(centerX, centerY);
   ctx.lineTo(
     centerX + v.elements[0] * scale,
     centerY - v.elements[1] * scale
