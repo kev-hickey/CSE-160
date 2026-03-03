@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lighting</title>
+  </head>
+
+  <body onload="main()">
+    <div>
+      <label>Kevin Hickey</label><br>
+      <label>kemhicke@ucsc.edu</label>
+    </div>
+
+    <h1>
+    THE MOON: NOW WITH LIGHT!
+    </h1>
+
+    <canvas id="webgl" width="800" height="600">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <div id="message"></div>
+
+
+    <p id="numdot"> XXX </p>
+    
+    <button type="button" id="lightOn">Light ON</button>
+    <button type="button" id="lightOff">Light OFF</button>
+
+    <button type="button" id="spotOn">Spotlight ON</button>
+    <button type="button" id="spotOff">Spotlight OFF</button>
+
+    <br><br>
+
+    <button type="button" id="normalOn">Normal ON</button>
+    <button type="button" id="normalOff">Normal OFF</button>
+
+    <h4>
+    Point Light:
+    </h4>
+    Color <input type="range" min="0" max="360" value="40" class="slider" id="lightHue" style="width: 300px;">
+    Light Height <input type="range" min="0" max="6000" value="500" class="slider" id="lightSlideY" style="width: 300px;">
+
+
+    <br><br>
+
+    <button id="startAsteroid">ASTEROID MINIGAME</button>
+    <button id="resetWorld">RESET</button><br><br>
+    The ASTEROID MINIGAME sends an asteroid into the Moon's surface.<br>
+    You must build blocks in between you and the impact point to <br>
+    avoid the impact explosion.
+
+    <h3>Controls</h3>
+    <table cellpadding = "8">
+      <tr><td>W</td><td>Move Forward</td></tr>
+      <tr><td>A</td><td>Move Left</td></tr>
+      <tr><td>S</td><td>Move Backward</td></tr>
+      <tr><td>D</td><td>Move Right</td></tr>
+      <tr><td>Space</td><td>Move Upward</td></tr>
+      <tr><td>Shift</td><td>Move Downward</td></tr>
+      <tr><td>F</td><td>Place Block</td></tr>
+      <tr><td>R</td><td>Break Block</td></tr>
+      <tr><td>Q</td><td>Look Left</td></tr>
+      <tr><td>E</td><td>Look Right</td></tr>
+    </table>
+
+
+    <script src="./lib/webgl-utils.js"></script>
+    <script src="./lib/webgl-debug.js"></script>
+    <script src="./lib/cuon-utils.js"></script>
+    <script src="./lib/cuon-matrix.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Point.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="Camera.js"></script>
+    <script src="World.js"></script>
+  </body>
+</html>
