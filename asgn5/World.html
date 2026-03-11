@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>THE MOON</title>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.183.2/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.2/examples/jsm/"
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <label>Kevin Hickey</label><br>
+      <label>kemhicke@ucsc.edu</label>
+    </div>
+
+    <h1 style="
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+    ">ASTEROID FIELD</h1>
+
+    <div id="canvasContainer" style="position: relative; width: 1520px; height: 800px;">
+      <canvas id="c"></canvas>
+      <div id="crashText" style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 128px;
+        color: red;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+        display: none;
+      ">CRASH!</div>
+      <div id="timer" style="
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 36px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+      ">0.00s</div>
+    </div>
+
+    <br>
+    <div style = "font-size: 24px; font-family: 'Courier New', Courier, monospace;">
+      Race to the finish ring! Controls: WASD, Shift - Down, Space - Up
+    </div>
+
+    <script type="module" src="World.js"></script>
+  </body>
+</html>
